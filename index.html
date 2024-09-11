@@ -1,0 +1,226 @@
+ <!DOCTYPE HTML>
+
+    <!--to make a single/double line break between paragraphs, use tag <br>-->
+
+    <!--to change the size of text format, use < h1> </h1>as the largest heading or < h6> </h6> is the smallest.-->
+
+        <html lang = "en"> 
+        
+        <head>
+            
+             <!--The charset attribute specifies the character encoding for the HTML document. The HTML5 specification encourages web developers to use the UTF-8 character set, which covers almost all of the characters and symbols in the world-->
+            
+            <meta charset= utf-8>
+            
+            <!--to use the latest version of the rendering engine. Regardless of the document’s compatibility mode-->
+            
+            <meta http-equiv="X-UA-Compatible" content = "IE-edge">
+            
+            <!--This gives the browser instructions on how to control the page's dimensions and scaling (so it can work well despite the window page adjusting).
+            
+            The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+
+            The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.-->
+            
+            <meta name = "viewport" content = "width-device-width, initial-scale=1.0">
+            
+            <title>doctor booking app design</title>
+            
+            
+            <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+            
+            <link href="https://fonts.cdnfonts.com/css/gill-sans-mt-2" rel="stylesheet">
+                
+            <!--custom css file link -->
+            
+            <link rel='stylesheet' href="css/style.css">
+            
+        
+        </head>
+        
+        <body>
+            
+            <!--header section starts -->
+        
+                
+             <header class="header">
+                <div class="logo">
+                     <a href="index.html"><img src="images/logo_option2.png" width="148px" >
+                     </a>
+                </div>
+                 
+                <div class="nav-container">
+                    <nav class="navbar" id="navbar">
+                        <a href="index.html">Home</a>
+                        <a href="doctors.html">Doctors</a>
+                        <a href="booking.html">Booking</a>
+                        <a href="about.html">About</a>
+                        <a href="account.html">Account</a>
+                    </nav>
+                    
+                    <a>
+                        <img
+                        src="images/menu2.png" class="menu-icon" id="menu-btn" width="30px" onclick="menuToggle()">
+                    </a>
+                </div>
+            </header>
+            
+            <!--header section ends -->
+            
+     <!-------- homepage starts ------->
+            
+            <section class="home" id="home">
+                <div class="home_image">
+                    <img src="images/homepage_image.png" alt="">
+                </div>
+                <div class="content">
+                <h3>Welcome to DocMeet.</h3>
+                <p>Welcome to DocMeet, where healthcare meets convenience. Easily choose your doctor and schedule check-ups online, providing seamless access to care and transparent insight into each doctor's availability.</p>
+                <a href="doctors.html" class="home_btn">Explore Now! &#8594;</a>
+                
+                </div>
+            
+            
+            
+            </section>
+            
+            
+
+     <!-------- homepage ends ------->
+            
+       
+    <!-------- animated steps ------->
+    
+    <div class="categories">
+        <div class="small-container">
+             <div class="row">
+                <div class="col-3">
+                    <img src="images/step1.png">
+
+                </div>
+
+                <div class="col-3">
+                    <img src="images/step2.png">
+
+                </div>
+                <div class="col-3">
+                    <img src="images/step3.png">
+
+                </div>
+        
+            </div>
+            
+         </div>       
+    
+    
+    </div>
+    
+      <!-------- featured doctors------->
+    
+    <div class="small-container">
+        <h2 class="title">Featured Doctors</h2>
+        <div class="row"> 
+            <div class="col-4">
+                <a href="dian_details.html"><img src="images/doc25.jpg"></a>
+                <a href="dian_details.html"><h4>Dr. Dian Belinay</h4></a>
+               
+                <p>Gynecologist</p>
+            
+            </div>
+             <div class="col-4">
+                 <a href="filiberto_details.html"><img src="images/doc18.jpg"></a>
+                 <a href="filiberto_details.html"><h4>Dr. Filiberto Kristófer</h4></a>
+           
+                 <p>General Practitioner</p>
+            
+            </div>
+             <div class="col-4">
+                 <a href="helena_details.html"><img src="images/doc30.webp"></a>
+                 <a href="helena_details.html"><h4>Dr. Helena Sofia</h4></a>
+         
+                 <p>Clinical Psychologist</p>
+            
+            </div>
+             <div class="col-4">
+                 <a href="saima_details.html"><img src="images/doc16.png"></a>
+                 <a href="saima_details.html"><h4>Dr. Saima Edi</h4></a>
+                
+                <p>Cardiologist</p>
+            
+            </div>
+        
+        
+        </div>
+                
+        
+    
+    
+    </div> 
+     
+            
+            
+            
+            
+            <!-------- footer ------->
+    
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col-1">
+                            <h3>Download Our App</h3>
+                            <p>Download App for Android and IOS mobile phone.</p>
+
+                            <div class="app-logo">
+                                <img src="images/play-store.png">
+                                <img src="images/app-store.png">
+
+                            </div>
+
+
+                        </div>
+                        <div class="footer-col-2">
+                            <img src="images/logo_option2.png">
+
+                            <p>Our Purpose Is To Provide a More Accesible Platform for Top Grade Medical Care. </p>
+
+
+                        </div>
+                        
+
+                    </div>
+                    <hr>
+                    <p class="copyright"> Copyright 2023 - DocMeet</p>
+
+
+
+                </div>
+
+
+
+            </div>
+            
+            
+            <!-------- js for toggle menu ------->
+    
+            <script>
+               function menuToggle() {
+                    var navbar = document.getElementById("navbar");
+                    navbar.classList.toggle("show-mobile");
+                }
+            </script>
+        
+        
+        </body>
+            
+            
+        
+
+    
+    
+    
+    
+        
+        
+    </html>
+        
+    

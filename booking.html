@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+
+    <!--to make a single/double line break between paragraphs, use tag <br>-->
+
+    <!--to change the size of text format, use < h1> </h1>as the largest heading or < h6> </h6> is the smallest.-->
+
+        <html lang = "en"> 
+        
+        <head>
+            
+             <!--The charset attribute specifies the character encoding for the HTML document. The HTML5 specification encourages web developers to use the UTF-8 character set, which covers almost all of the characters and symbols in the world-->
+            
+            <meta charset= utf-8>
+            
+            <!--to use the latest version of the rendering engine. Regardless of the document’s compatibility mode-->
+            
+            <meta http-equiv="X-UA-Compatible" content = "IE-edge">
+            
+            <!--This gives the browser instructions on how to control the page's dimensions and scaling (so it can work well despite the window page adjusting).
+            
+            The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+
+            The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.-->
+            
+            <meta name = "viewport" content = "width-device-width, initial-scale=1.0">
+            
+            <title>doctor booking app design</title>
+            
+            
+            <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+            
+            <link href="https://fonts.cdnfonts.com/css/gill-sans-mt-2" rel="stylesheet">
+                
+            <!--custom css file link -->
+            
+            <link rel='stylesheet' href="css/style.css">
+            
+        
+        </head>
+        
+        <body>
+            
+            <!--header section starts -->
+        
+                
+             <header class="header">
+                <div class="logo">
+                     <a href="index.html"><img src="images/logo_option2.png" width="148px" >
+                     </a>
+                </div>
+                 
+                <div class="nav-container">
+                    <nav class="navbar" id="navbar">
+                        <a href="index.html">Home</a>
+                        <a href="doctors.html">Doctors</a>
+                        <a href="booking.html">Booking</a>
+                        <a href="about.html">About</a>
+                        <a href="account.html">Account</a>
+                    </nav>
+                    
+                    <a>
+                        <img
+                        src="images/menu2.png" class="menu-icon" id="menu-btn" width="30px" onclick="menuToggle()">
+                    </a>
+                </div>
+            </header>
+            
+            <!--header section ends -->
+            
+            <!--daphnes html starts -->
+            <section class="booking" id="booking">
+                <h1 id="book-appointment-heading">BOOK APPOINTMENT</h1>
+                <div id="calendar"></div>
+
+
+                <div class="popup" id="popup">
+                    <p>Confirm Appointment:</p>
+                    <p id="selected-time"></p>
+                    <button class="custom-button" onclick="confirmAppointment()">Confirm</button>
+                    <button class="custom-button" onclick="closePopup()">Cancel</button>
+                </div>
+
+
+                <div class="schedule-container" id="schedule-container" style="display: none;">
+                    <h2>Select a Time</h2>
+                    <select id="time-select">
+                        <option value="9:00">9:00</option>
+                        <option value="9:15">9:15</option>
+                        <option value="9:30">9:30</option>
+                        <option value="9:45">9:45</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:15">10:15</option>
+                        <option value="10:30">10:30</option>
+                        <option value="10:45">10:45</option>
+                   </select>
+                  <button class="custom-button" onclick="showPopup()">Confirm</button>
+                </div>
+            </section>
+            
+
+            
+            <!--daphnes html ends -->
+                
+                
+<!-------- footer ------->
+    
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col-1">
+                            <h3>Download Our App</h3>
+                            <p>Download App for Android and IOS mobile phone.</p>
+
+                            <div class="app-logo">
+                                <img src="images/play-store.png">
+                                <img src="images/app-store.png">
+
+                            </div>
+
+
+                        </div>
+                        <div class="footer-col-2">
+                            <img src="images/logo_option2.png">
+
+                            <p>Our Purpose Is To Provide a More Accesible Platform for Top Grade Medical Care. </p>
+
+
+                        </div>
+                        
+
+                    </div>
+                    <hr>
+                    <p class="copyright"> Copyright 2023 - DocMeet</p>
+
+
+
+                </div>
+
+
+
+            </div>
+            
+        
+            
+            
+            <!-------- js for toggle menu ------->
+    
+            <script>
+               function menuToggle() {
+                    var navbar = document.getElementById("navbar");
+                    navbar.classList.toggle("show-mobile");
+                }
+            </script>
+            
+            <!-------- daphnes js ------->
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const calendarElement = document.getElementById("calendar");
+                    const scheduleContainer = document.getElementById("schedule-container");
+
+                    // Month names for header
+                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                    // Get the current date
+                    const currentDate = new Date();
+
+                    // Render the calendar
+                    renderCalendar(currentDate);
+
+                    function renderCalendar(date) {
+                        const year = date.getFullYear();
+                        const month = date.getMonth();
+                        const calendarElement = document.getElementById("calendar");
+
+                        const calendarHTML = `
+                          <div>
+                            <h2>${monthNames[month]} ${year}</h2>
+                            <div class="month">
+                              <div class="weekday">Sun</div>
+                              <div class="weekday">Mon</div>
+                              <div class="weekday">Tue</div>
+                              <div class="weekday">Wed</div>
+                              <div class="weekday">Thu</div>
+                              <div class="weekday">Fri</div>
+                              <div class="weekday">Sat</div>
+                              ${renderDays(year, month)}
+                            </div>
+                          </div>
+                        `;
+
+                        calendarElement.innerHTML = calendarHTML;
+
+                        // Add event listeners for day selection
+                        const dayElements = document.querySelectorAll('.day');
+                        dayElements.forEach(dayElement => {
+                            dayElement.addEventListener('click', () => {
+                                // Get the selected day
+                                const selectedDay = dayElement.innerText;
+
+                                // Show confirmation pop-up
+                                const isConfirmed = confirm(`Confirm Date for ${monthNames[month]} ${selectedDay}, ${year}?`);
+
+                                if (isConfirmed) {
+                                  // Display the schedule container
+                                  scheduleContainer.style.display = 'block';
+                                }
+                              });
+                            });
+                          }
+
+                          function renderDays(year, month) {
+                            const firstDayOfMonth = new Date(year, month, 1);
+                            const lastDayOfMonth = new Date(year, month + 1, 0);
+                            const daysInMonth = lastDayOfMonth.getDate();
+                            const firstDayOfWeek = firstDayOfMonth.getDay();
+
+                            let calendarDaysHTML = '';
+
+                            // Render empty cells for days before the first day of the month
+                            for (let i = 0; i < firstDayOfWeek; i++) {
+                              calendarDaysHTML += '<div class="day"></div>';
+                            }
+
+                            // Render the days of the month
+                            for (let day = 1; day <= daysInMonth; day++) {
+                              calendarDaysHTML += `<div class="day">${day}</div>`;
+                            }
+
+                            return calendarDaysHTML;
+                          }
+                        });
+
+                        function showPopup() {
+                          const selectedTime = document.getElementById('time-select').value;
+                          document.getElementById('selected-time').textContent = selectedTime;
+                          document.getElementById('popup').style.display = 'block';
+                        }
+
+                        function closePopup() {
+                          document.getElementById('popup').style.display = 'none';
+                        }
+
+                        function confirmAppointment() {
+  
+                             closePopup();
+
+                              // Redirect to the thank-you page
+                              window.location.href = 'thankyou.html';
+                        }
+                
+                
+                
+            </script>
+<!--
+            
+// window.location.href- it returns the URL (href) of the current page.
+//
+// window.location.replace()- it replaces the current document with new document.
+//
+//window.location.assign() loads a new document.
+//might need to do:
+                //window.location.assign("thankyou.html");
+-->
+                
+                
+            
+
+        
+        
+        </body>
+            
+              
+        
+    </html>
+        
+    
